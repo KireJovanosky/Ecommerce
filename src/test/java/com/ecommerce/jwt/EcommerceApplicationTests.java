@@ -1,10 +1,10 @@
-package com.ecommerce.jwtecommerce;
+package com.ecommerce.jwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JwtEcommerceApplicationTests {
+class EcommerceApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,6 +1,6 @@
-package com.ecommerce.jwtecommerce.dao;
+package com.ecommerce.jwt.dao;
 
-import com.ecommerce.jwtecommerce.entity.Role;
+import com.ecommerce.jwt.entity.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

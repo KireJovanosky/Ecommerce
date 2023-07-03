@@ -1,4 +1,4 @@
-package com.ecommerce.jwtecommerce.entity;
+package com.ecommerce.jwt.entity;
 
 public class JwtResponse {
 

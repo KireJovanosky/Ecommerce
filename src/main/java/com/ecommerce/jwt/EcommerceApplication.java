@@ -1,13 +1,13 @@
-package com.ecommerce.jwtecommerce;
+package com.ecommerce.jwt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JwtEcommerceApplication {
+public class EcommerceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtEcommerceApplication.class, args);
+		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
 }

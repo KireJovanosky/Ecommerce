@@ -1,7 +1,7 @@
-package com.ecommerce.jwtecommerce.controller;
+package com.ecommerce.jwt.controller;
 
-import com.ecommerce.jwtecommerce.entity.Role;
-import com.ecommerce.jwtecommerce.service.RoleService;
+import com.ecommerce.jwt.entity.Role;
+import com.ecommerce.jwt.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

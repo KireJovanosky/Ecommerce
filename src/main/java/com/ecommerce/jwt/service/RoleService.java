@@ -1,7 +1,7 @@
-package com.ecommerce.jwtecommerce.service;
+package com.ecommerce.jwt.service;
 
-import com.ecommerce.jwtecommerce.dao.RoleDao;
-import com.ecommerce.jwtecommerce.entity.Role;
+import com.ecommerce.jwt.dao.RoleDao;
+import com.ecommerce.jwt.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,13 +1,10 @@
-package com.ecommerce.jwtecommerce.controller;
+package com.ecommerce.jwt.controller;
 
-import com.ecommerce.jwtecommerce.entity.User;
-import com.ecommerce.jwtecommerce.service.UserService;
+import com.ecommerce.jwt.entity.User;
+import com.ecommerce.jwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -34,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping({"/forUser"})
-    @PreAuthorize("hasAnyRole('User', 'Admin')")
+    @PreAuthorize("hasRole('User')")
     public String forUser(){
         return "This URL is only accessible to the users";
     }

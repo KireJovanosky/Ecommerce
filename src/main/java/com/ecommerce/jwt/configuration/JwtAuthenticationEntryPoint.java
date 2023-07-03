@@ -1,4 +1,4 @@
-package com.ecommerce.jwtecommerce.configuration;
+package com.ecommerce.jwt.configuration;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

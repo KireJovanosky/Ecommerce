@@ -1,11 +1,11 @@
-package com.ecommerce.jwtecommerce.service;
+package com.ecommerce.jwt.service;
 
 
-import com.ecommerce.jwtecommerce.dao.UserDao;
-import com.ecommerce.jwtecommerce.entity.JwtRequest;
-import com.ecommerce.jwtecommerce.entity.JwtResponse;
-import com.ecommerce.jwtecommerce.entity.User;
-import com.ecommerce.jwtecommerce.util.JwtUtil;
+import com.ecommerce.jwt.dao.UserDao;
+import com.ecommerce.jwt.entity.JwtRequest;
+import com.ecommerce.jwt.entity.JwtResponse;
+import com.ecommerce.jwt.entity.User;
+import com.ecommerce.jwt.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

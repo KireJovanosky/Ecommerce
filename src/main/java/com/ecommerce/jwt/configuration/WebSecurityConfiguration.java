@@ -1,4 +1,4 @@
-package com.ecommerce.jwtecommerce.configuration;
+package com.ecommerce.jwt.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.cors();
         httpSecurity.csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/authenticate", "/registerNewUser").permitAll()
+                    .antMatchers("/authenticate", "/registerNewUser", "/addNewProduct").permitAll()
                     .antMatchers(HttpHeaders.ALLOW).permitAll()
                     .anyRequest().authenticated()
                     .and()

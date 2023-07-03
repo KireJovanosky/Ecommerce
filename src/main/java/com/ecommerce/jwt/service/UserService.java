@@ -1,9 +1,9 @@
-package com.ecommerce.jwtecommerce.service;
+package com.ecommerce.jwt.service;
 
-import com.ecommerce.jwtecommerce.dao.RoleDao;
-import com.ecommerce.jwtecommerce.dao.UserDao;
-import com.ecommerce.jwtecommerce.entity.Role;
-import com.ecommerce.jwtecommerce.entity.User;
+import com.ecommerce.jwt.dao.RoleDao;
+import com.ecommerce.jwt.dao.UserDao;
+import com.ecommerce.jwt.entity.Role;
+import com.ecommerce.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -55,15 +55,15 @@ public class UserService {
         adminUser.setRole(adminRoles);
         userDao.save(adminUser);
 
-//        User user = new User();
-//        user.setUserFirstName("Nikola");
-//        user.setUserLastName("Nikolov");
-//        user.setUserName("nikola.n");
-//        user.setUserPassword(getEncodedPassword("nikola@pass"));
-//        Set<Role> userRoles = new HashSet<>();
-//        userRoles.add(userRole);
-//        user.setRole(userRoles);
-//        userDao.save(user);
+        User user = new User();
+        user.setUserFirstName("Dario");
+        user.setUserLastName("Jovanoski");
+        user.setUserName("dario");
+        user.setUserPassword(getEncodedPassword("dario@pass"));
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(userRole);
+        user.setRole(userRoles);
+        userDao.save(user);
 
     }
 

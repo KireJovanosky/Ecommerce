@@ -1,4 +1,4 @@
-package com.ecommerce.jwtecommerce.entity;
+package com.ecommerce.jwt.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

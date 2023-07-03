@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ecommerce</groupId>
-	<artifactId>jwt-ecommerce</artifactId>
+	<artifactId>jwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jwt-ecommerce</name>
-	<description>JWT token + role based authentication mechanism</description>
+	<name>Ecommerce</name>
+	<description>APIs for E-Commerce application</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
