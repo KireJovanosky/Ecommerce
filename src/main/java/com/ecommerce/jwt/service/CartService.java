@@ -45,8 +45,8 @@ public class CartService {
     }
 
     public List<Cart> getCartDetails(){
-        String userName = JwtRequestFilter.CURRENT_USER;
-        User user = userDao.findById(userName).get();
+        String username = JwtRequestFilter.CURRENT_USER;
+        User user = userDao.findById(username).get();
         return cartDao.findByUser(user);
     }
 
