@@ -1,6 +1,7 @@
 package com.ecommerce.jwt.service;
 
 import com.ecommerce.jwt.configuration.JwtRequestFilter;
+import com.ecommerce.jwt.dao.CartDao;
 import com.ecommerce.jwt.dao.OrderDetailDao;
 import com.ecommerce.jwt.dao.ProductDao;
 import com.ecommerce.jwt.dao.UserDao;
@@ -24,7 +25,10 @@ public class OrderDetailService {
     @Autowired
     private UserDao userDao;
 
-    public void placeOrder(OrderInput orderInput){
+    @Autowired
+    private CartDao cartDao;
+
+    public void placeOrder(OrderInput orderInput, boolean isSingleProductCheckout){
         List<OrderProductQuantity> productQuantityList = orderInput.getOrderProductQuantityList();
 
         for (OrderProductQuantity o: productQuantityList){
@@ -43,6 +47,12 @@ public class OrderDetailService {
                     product,
                     user
             );
+            // empty the cart
+            if (!isSingleProductCheckout) {
+               List<Cart> items = cartDao.findByUser(user);
+               items.stream().forEach(i -> cartDao.deleteById(i.getCartId()));
+            }
+
             orderDetailDao.save(orderDetail);
         }
     }
