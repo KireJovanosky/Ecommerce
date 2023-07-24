@@ -32,6 +32,10 @@ public class OrderDetail {
         this.user = user;
     }
 
+    public OrderDetail(){
+
+    }
+
     public Integer getOrderId() {
         return orderId;
     }
