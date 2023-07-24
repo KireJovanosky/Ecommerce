@@ -66,12 +66,19 @@ public class OrderDetailService {
         return orderDetailDao.findByUser(user);
     }
 
-    public List<OrderDetail> getAllOrderDetails() {
+    public List<OrderDetail> getAllOrderDetails(String status) {
         List<OrderDetail> orderDetails = new ArrayList<>();
-        orderDetailDao.findAll().forEach(
-                o -> orderDetails.add(o)
-        );
-        return orderDetails;
+        if (status.equals("All")) {
+            orderDetailDao.findAll().forEach(
+                    o -> orderDetails.add(o)
+            );
+
+        }else {
+            orderDetailDao.findByOrderStatus(status).forEach(
+                    o -> orderDetails.add(o)
+            );
+        }
+            return orderDetails;
     }
 
     public void markOrderAsDelivered(Integer orderId){
