@@ -60,4 +60,8 @@ public class CartService {
         return cartDao.findByUser(user);
     }
 
+    public void deleteCartItem(Integer cartId) {
+        cartDao.deleteById(cartId);
+    }
+
 }
