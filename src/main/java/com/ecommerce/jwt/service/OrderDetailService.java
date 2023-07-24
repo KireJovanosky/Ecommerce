@@ -9,6 +9,7 @@ import com.ecommerce.jwt.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,4 +66,11 @@ public class OrderDetailService {
         return orderDetailDao.findByUser(user);
     }
 
+    public List<OrderDetail> getAllOrderDetails() {
+        List<OrderDetail> orderDetails = new ArrayList<>();
+        orderDetailDao.findAll().forEach(
+                o -> orderDetails.add(o)
+        );
+        return orderDetails;
+    }
 }
