@@ -1,4 +1,4 @@
-The ECommerce Application is a robust and scalable platform built using Java and Spring Boot. It offers a secure and efficient way for businesses to sell their products to customers. With a focus on security, scalability, and ease of maintenance, this application is designed to meet the demands of modern ECommerce businesses.
+The Ecommerce Application is a robust and scalable platform built using Java and Spring Boot. It offers a secure and efficient way for businesses to sell their products to customers. With a focus on security, scalability, and ease of maintenance, this application is designed to meet the demands of modern ECommerce businesses.
 
 **Features**  
   **Admin:**  
