@@ -1,6 +1,5 @@
 package com.ecommerce.jwt.service;
 
-import com.ecommerce.jwt.configuration.JwtRequestFilter;
 import com.ecommerce.jwt.dao.CartDao;
 import com.ecommerce.jwt.dao.ProductDao;
 import com.ecommerce.jwt.dao.UserDao;
@@ -10,6 +9,8 @@ import com.ecommerce.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -60,8 +61,8 @@ public class ProductService {
             return list;
         }else {
         // buy whole shopping cart
-            String username = JwtRequestFilter.CURRENT_USER;
-            User user = userDao.findById(username).get();
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = userDao.findById(auth.getName()).get();
             List<Cart> cartItems = cartDao.findByUser(user);
 
             return cartItems.stream().map(i -> i.getProduct()).collect(Collectors.toList());

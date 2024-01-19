@@ -1,7 +1,6 @@
 package com.ecommerce.jwt.service;
 
 
-import com.ecommerce.jwt.configuration.JwtRequestFilter;
 import com.ecommerce.jwt.dao.CartDao;
 import com.ecommerce.jwt.dao.ProductDao;
 import com.ecommerce.jwt.dao.UserDao;
@@ -9,6 +8,8 @@ import com.ecommerce.jwt.entity.Cart;
 import com.ecommerce.jwt.entity.Product;
 import com.ecommerce.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,12 +31,12 @@ public class CartService {
     public Cart addToCart(Integer productId) {
         Product product = productDao.findById(productId).get();
 
-        String username = JwtRequestFilter.CURRENT_USER;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User user = null;
 
-        if (username != null){
-            user = userDao.findById(username).get();
+        if (auth.getName() != null){
+            user = userDao.findById(auth.getName()).get();
         }
 
         List<Cart> cartList = cartDao.findByUser(user);
@@ -55,8 +56,8 @@ public class CartService {
     }
 
     public List<Cart> getCartDetails(){
-        String username = JwtRequestFilter.CURRENT_USER;
-        User user = userDao.findById(username).get();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userDao.findById(auth.getName()).get();
         return cartDao.findByUser(user);
     }
 

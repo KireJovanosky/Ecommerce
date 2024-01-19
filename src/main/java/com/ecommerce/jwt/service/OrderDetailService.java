@@ -1,12 +1,13 @@
 package com.ecommerce.jwt.service;
 
-import com.ecommerce.jwt.configuration.JwtRequestFilter;
 import com.ecommerce.jwt.dao.CartDao;
 import com.ecommerce.jwt.dao.OrderDetailDao;
 import com.ecommerce.jwt.dao.ProductDao;
 import com.ecommerce.jwt.dao.UserDao;
 import com.ecommerce.jwt.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public class OrderDetailService {
         for (OrderProductQuantity o: productQuantityList){
             Product product = productDao.findById(o.getProductId()).get();
 
-            String currentUser = JwtRequestFilter.CURRENT_USER;
-            User user = userDao.findById(currentUser).get();
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = userDao.findById(auth.getName()).get();
 
             OrderDetail orderDetail = new OrderDetail(
                     orderInput.getFullName(),
@@ -59,9 +60,9 @@ public class OrderDetailService {
     }
 
     public List<OrderDetail> getOrderDetails(){
-        String currentUser = JwtRequestFilter.CURRENT_USER;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        User user = userDao.findById(currentUser).get();
+        User user = userDao.findById(auth.getName()).get();
 
         return orderDetailDao.findByUser(user);
     }
