@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "jwt-ecommerce";
+    private static final String SECRET_KEY = System.getenv("secret_key");
 
     private static final int TOKEN_VALIDITY = 3600 * 5;
 
