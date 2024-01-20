@@ -3,6 +3,8 @@ package com.ecommerce.jwt.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +16,15 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = System.getenv("secret_key");
+    private final String SECRET_KEY;
+
+    @Autowired
+    public JwtUtil(@Value("${secret_key}") String secretKey) {
+        if (secretKey == null || secretKey.isEmpty()) {
+            throw new IllegalArgumentException("Secret key must be provided");
+        }
+        this.SECRET_KEY = secretKey;
+    }
 
     private static final int TOKEN_VALIDITY = 3600 * 5;
 
