@@ -20,7 +20,7 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    public static String CURRENT_USER = "";
+    private ThreadLocal<String> currentUserThreadLocal = new ThreadLocal<>();
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -40,7 +40,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             jwtToken = requestTokenHeader.substring(7);
             try {
                 username = jwtUtil.getUserNameFromToken(jwtToken);
-                CURRENT_USER = username;
+                currentUserThreadLocal.set(username);
             } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
@@ -60,7 +60,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
+        currentUserThreadLocal.remove();
+    }
 
+    public String getCurrentUser() {
+        return currentUserThreadLocal.get();
     }
 
 }
